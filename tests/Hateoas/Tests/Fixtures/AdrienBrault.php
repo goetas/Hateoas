@@ -10,9 +10,10 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *      "self",
  *      href = "http://adrienbrault.fr",
+ *      attributes={"foo":"bar"},
  *      exclusion = @Hateoas\Exclusion(
  *          groups = {"Default", "simple"},
- *          excludeIf = "expr(object.firstName !== 'Adrien' || object.lastName !== 'Brault')"
+ *          excludeIf = "(object.firstName !== 'Adrien' || object.lastName !== 'Brault')"
  *      )
  * )
  * @Hateoas\Relation(
@@ -20,24 +21,18 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *      href = "http://www.apple.com/macbook-pro/",
  *      exclusion = @Hateoas\Exclusion(groups = {"Default", "simple"}),
  *      embedded = @Hateoas\Embedded(
- *          "expr(object.getMacbookPro())",
+ *          "object.getMacbookPro()",
  *          exclusion = @Hateoas\Exclusion(groups = {"Default"})
  *      )
  * )
  * @Hateoas\Relation(
  *      "broken-computer",
- *      embedded = "expr(object.getWindowsComputer())"
+ *      embedded = "object.getWindowsComputer()",
  * )
  * @Hateoas\Relation(
  *      "smartphone",
- *      embedded = "expr(object.getiOSSmartphone())"
+ *      embedded = "object.getiOSSmartphone()"
  * )
- * @Hateoas\Relation(
- *      "smartphone",
- *      embedded = "expr(object.getAndroidSmartphone())"
- * )
- *
- * @Hateoas\RelationProvider("getRelations")
  */
 class AdrienBrault
 {

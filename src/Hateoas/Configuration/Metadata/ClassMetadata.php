@@ -10,7 +10,7 @@ use Metadata\MergeableInterface;
 /**
  * @author Adrien Brault <adrien.brault@gmail.com>
  */
-class ClassMetadata extends MergeableClassMetadata implements ClassMetadataInterface
+class ClassMetadata extends MergeableClassMetadata
 {
     /**
      * @var Relation[]
@@ -36,6 +36,26 @@ class ClassMetadata extends MergeableClassMetadata implements ClassMetadataInter
     public function getRelations()
     {
         return $this->relations;
+    }
+
+    public function hasLinks()
+    {
+        foreach ($this->relations as $relation) {
+            if ($relation->getHref()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasEmbedded()
+    {
+        foreach ($this->relations as $relation) {
+            if ($relation->getEmbedded()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

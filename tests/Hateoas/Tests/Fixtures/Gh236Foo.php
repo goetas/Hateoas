@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @Hateoas\Relation(
  *     name = "b_embed",
  *     embedded = @Hateoas\Embedded(
- *         "expr(object.b)",
+ *         "(object.b)",
  *          exclusion = @Hateoas\Exclusion(maxDepth=1)
  *     )
  * )

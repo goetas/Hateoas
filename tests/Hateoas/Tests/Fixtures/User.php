@@ -6,11 +6,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * @Hateoas\Relation("self", href = "http://hateoas.web/user/42", attributes = {"type" = "application/json"})
- * @Hateoas\Relation("foo", href = @Hateoas\Route("user_get", parameters = {"id" = "expr(object.getId())"}), embedded = "expr(object.getFoo())")
+ * @Hateoas\Relation("foo", href = @Hateoas\Route("user_get", parameters = {"id" = "(object.getId())"}), embedded = "(object.getFoo())")
  * @Hateoas\Relation("bar", href = "foo", embedded = @Hateoas\Embedded("data", xmlElementName = "barTag"))
- * @Hateoas\Relation("baz", href = @Hateoas\Route("user_get", parameters = {"id" = "expr(object.getId())"}, absolute = true), embedded = "expr(object.getFoo())")
- * @Hateoas\Relation("boom", href = @Hateoas\Route("user_get", parameters = {"id" = "expr(object.getId())"}, absolute = false), embedded = "expr(object.getFoo())")
- * @Hateoas\Relation("badaboom", embedded = "expr(object.getFoo())")
+ * @Hateoas\Relation("baz", href = @Hateoas\Route("user_get", parameters = {"id" = "(object.getId())"}, absolute = true), embedded = "(object.getFoo())")
+ * @Hateoas\Relation("boom", href = @Hateoas\Route("user_get", parameters = {"id" = "(object.getId())"}, absolute = false), embedded = "(object.getFoo())")
+ * @Hateoas\Relation("badaboom", embedded = "(object.getFoo())")
  * @Hateoas\Relation(
  *      "hello",
  *      href = "/hello",
@@ -34,7 +34,6 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *      )
  * )
  *
- * @Hateoas\RelationProvider("getRelations")
  */
 class User
 {
